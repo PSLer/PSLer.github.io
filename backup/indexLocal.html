@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Researcher</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        img {
+            width: 150px;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .publications-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .publications-table td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            vertical-align: top;
+        }
+        .publications-table td:first-child {
+            width: 25%;
+        }
+        .publications-table td:last-child {
+            width: 75%;
+        }
+        .publication-title {
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .publication-authors {
+            font-size: 14px;
+        }
+        .publication-authors b {
+            font-weight: bold;
+        }
+        .publication-journal {
+            font-style: italic;
+            font-size: 14px;
+        }
+        .publication-links a {
+            display: inline-block;
+            padding: 5px 10px;
+            margin-right: 5px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .zoomable {
+            transition: transform 0.3s ease-in-out;
+        }
+        .zoomable:hover {
+            transform: scale(1.5);
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        .gallery img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+            transition: transform 0.5s ease-in-out;
+        }
+        .gallery img:hover {
+            transform: scale(2) translateY(-20px);
+            z-index: 10;
+        }
+        .opensource-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .opensource-table td {
+            padding: 10px;
+            vertical-align: top;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Your Name</h1>
+        <img src="medias/your-photo.jpg" alt="Your Photo">
+        <p><strong>Affiliation:</strong> Your Institution / University</p>
+        <p><strong>Email:</strong> your.email@example.com</p>
+    </header>
+    
+    <section class="section">
+        <h2>Biography</h2>
+        <p>Short biography about your research interests, background, and experience.</p>
+    </section>
+    
+    <section class="section">
+        <h2>Professional Activities</h2>
+        <ul>
+            <li>Conference organization and committee memberships</li>
+            <li>Journal editorial board participation</li>
+            <li>Invited talks and keynote speeches</li>
+            <li>Other professional engagements</li>
+        </ul>
+    </section>
+    
+    <section class="section">
+        <h2>News</h2>
+        <ul>
+            <li>[Date] - Latest news or updates.</li>
+            <li>[Date] - Another update about your work.</li>
+        </ul>
+    </section>
+    
+    <section class="section">
+        <h2>Publications</h2>
+        <table class="publications-table">
+            <tr>
+                <td><img src="medias/paper1-thumbnail.jpg" alt="Paper 1 Thumbnail" class="zoomable"></td>
+                <td>
+                    <div class="publication-title"><a href="#">Paper Title 1</a></div>
+                    <div class="publication-authors">Author 1, <b>Your Name</b>, Author 3</div>
+                    <div class="publication-journal">Journal/Conference Name, Year</div>
+                </td>
+            </tr>
+        </table>
+    </section>
+    
+    <section class="section">
+        <h2>Open-Source Contributions</h2>
+        <table class="opensource-table">
+            <tr>
+                <td colspan="3"><strong><a href="#">Project 1 Name</a></strong> - Short description of the project.</td>
+            </tr>
+            <tr>
+                <td><img src="medias/project1-result1.jpg" class="zoomable" alt="Project 1 Image 1"></td>
+                <td><img src="medias/project1-result2.jpg" class="zoomable" alt="Project 1 Image 2"></td>
+                <td><img src="medias/project1-result3.jpg" class="zoomable" alt="Project 1 Image 3"></td>
+            </tr>
+            <tr>
+                <td colspan="3"><strong><a href="#">Project 2 Name</a></strong> - Short description of the project.</td>
+            </tr>
+            <tr>
+                <td><img src="medias/project2-result1.jpg" class="zoomable" alt="Project 2 Image 1"></td>
+                <td><img src="medias/project2-result2.jpg" class="zoomable" alt="Project 2 Image 2"></td>
+                <td><img src="medias/project2-result3.jpg" class="zoomable" alt="Project 2 Image 3"></td>
+            </tr>
+        </table>
+    </section>
+    
+    <section class="section">
+        <h2>Gallery</h2>
+        <div class="gallery">
+            <img src="medias/image1.jpg" class="zoomable" alt="Cool Image 1">
+            <img src="medias/image2.jpg" class="zoomable" alt="Cool Image 2">
+            <img src="medias/image3.jpg" class="zoomable" alt="Cool Image 3">
+            <img src="medias/image4.jpg" class="zoomable" alt="Cool Image 4">
+            <img src="medias/image5.jpg" class="zoomable" alt="Cool Image 5">
+            <img src="medias/image6.jpg" class="zoomable" alt="Cool Image 6">
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 Your Name | Hosted on <a href="https://github.com">GitHub Pages</a></p>
+    </footer>
+</body>
+</html>
