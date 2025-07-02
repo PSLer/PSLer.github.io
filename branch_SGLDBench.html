@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+		<title>SGLDBench</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Optional external stylesheet -->
+	<link rel="stylesheet" href="style.css">
+	<style>
+		body {
+		font-family: Arial, sans-serif;
+		line-height: 1.6;
+		max-width: 900px;
+		margin: auto;
+		padding: 2em;
+		}
+		h1, h2, h3 {
+		color: #333;
+		}
+		a {
+		color: #0056cc;
+		text-decoration: none;
+		}
+		a:hover {
+		text-decoration: underline;
+		}
+		figure {
+		margin: 1em 0;
+		}
+		img {
+		max-width: 100%;
+		height: auto;
+		}
+		.case {
+		margin-bottom: 2em;
+		padding-bottom: 1em;
+		border-bottom: 1px solid #ddd;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>SGLDBench</h1>
+	<p>
+		<strong>Code Repository:</strong>
+		<a href="https://github.com/PSLer/SGLDBench" target="_blank">GitHub – SGLDBench</a>
+		<br>
+		<!--<strong>Contributors:</strong> Junpeng Wang, Dennis Bukenberger, Simon Niedermayr <br>-->
+		<strong>Contact:</strong> junpeng.wang@tum.de | dennis.bukenberger@tum.de
+	</p>
+
+	<section>
+		<h2>Description</h2>
+		<p>
+			<span style="color: green;"><i>This page is created to showcase and exchange the use of SGLDBench. 
+				Reporting bugs, leaving comments, and sharing cool application cases are warmly welcomed!</i></span>
+		</p>
+		<p>SGLDBench is a comprehensive benchmark suite for applying and evaluating material layout strategies to generate stiff, lightweight structural designs 
+			in 3D domains, with a special focus on high-resolution designs.</p>
+		<p>SGLDBench provides a seamlessly integrated simulation and analysis framework, including six reference strategies and a scalable multigrid 
+			elasticity solver to efficiently execute these strategies and validate the stiffness of their results.  </p>
+		<p>SGLDBench is primarily implemented using MATLAB, but also has external calls to C++ code through the MEX interface for performance reasons, 
+			and to executables and Python codes for functionality reasons, which provides a handy stencil for future extensions.</p>
+		<p>For an overview of this tool, please have a look at the <a href="https://github.com/PSLer/SGLDBench/blob/main/README.md" target="_blank">README</a> 
+			of the code repository and watch the guide <a href="https://ieeexplore.ieee.org/document/11015568/media#media" target="_blank">videos</a>.</p>
+	</section>
+
+	<section>
+	<h2>Updates</h2>
+	<ul>
+		<li><strong>2025-06-30:</strong> Page is created.</li>
+		<!--
+			<li><strong>2025-05-10:</strong> Improved FEM solvers and added example scripts in MATLAB and Python</li>
+		-->
+	</ul>
+	</section>
+
+	<section>
+	<h2>What can SGLDBench do?</h2>
+	<ul>
+		<li>High-resolution <i>Topology Optimization</i> or <a href="https://ieeexplore.ieee.org/abstract/document/7829422" target="_blank"><i>Porous 
+			Infill Optimization</i></a> in 3D? ✔️</li>
+		<li>Design and evaluation of stiff lightweight structure in 3D using <i>Stress-aware Graded Voronoi Diagram</i>, 
+			<a href="https://doi.org/10.1115/DETC2022-89030" target="_blank"><i>Principal Stress Lines</i></a> (PSLs), 
+				<a href="https://ieeexplore.ieee.org/abstract/document/8823060" target="_blank"><i>Stress-aligned Conforming Lattices</i></a>, 
+					and <a href="https://dl.acm.org/doi/abs/10.1145/3328939.3328999" target="_blank"><i>Volumetric Michell Trusses</i></a>? ✔️</li>
+		<li>Evaluating stiffness of external structural designs depicted in voxels, node-edge graph, tet- or hex-mesh? ✔️</li>
+		<li>Evaluating stiffness of structural designs when loading direction is changed? ✔️</li>
+		<li>Simply visualizing a structural design depicted in voxels and written in .NIFTI format? ✔️</li>
+	</ul>
+	</section>
+
+	<section>
+	<h2>Data Format</h2>
+	<ul>
+		<li>SGLDBench takes triangular surface meshes (.obj, .ply, .stl) as input to construct the voxelized 
+			domain for elasticity simulation. </li>
+		<li>SGLDBench introduces a tailored ASCII File (.TopVoxel) to exchange (I/O) the voxel FEA model, including 
+			solid voxels/Elements, node-wise boundary conditions, per-voxel density values (optional), and passive 
+			elements if necessary. Both element and node information are stored as the indices of the target 
+			entities in the corresponding binary volume data (<i>V</i>) in Row-Column-Page order, refer to 
+			<i>indices=find(V)</i> in MATLAB.</li>
+		<li>External lightweight structural designs depicted in a node-edge graph (.obj), tet-, or 
+			hex-mesh (.vtk, .mesh) can be imported into SGLDBench for stiffness evaluation by voxelizing 
+			graph/mesh edges</li>
+		<li>Strucctural designs made in SGLDBench are depicted in a volume data and exported in the ".NIFTI" format
+		for downstream operations.</li>
+	</ul>
+	</section>
+
+	<section>
+	<h2>Related Publication</h2>
+	<p>
+		<strong>Title:</strong> "SGLDBench: A Benchmark Suite for Stress-Guided Lightweight 3D Designs"<br>
+		<strong>Authors:</strong> <b>Junpeng Wang</b>, Dennis Bukenberger, Simon Niedermayr, Christoph Neuhauser, Jun Wu, Rüdiger Westermann<br>
+		<strong>Venue:</strong> IEEE Transactions on Visualization and Computer Graphics, 2025<br>
+		<a href="https://ieeexplore.ieee.org/document/11015568" target="_blank">[Read the Paper]</a>
+	</p>
+	</section>
+  
+	<section>
+	<h2>Application-specific Branches/Extensions</h2>
+	<u1>
+		<li> TBA </li>
+	</u1>
+	</section>  
+
+	<section>
+    <h2>Demonstration Cases</h2>
+    <div class="case">
+		<h3>Case 3: Creating a bone-mimicking infill for a spine model via porous infill optimization </h3>
+		
+		<div style="display: inline-block; width: 24%; text-align: center;">
+			<figure>
+				<img src="medias_SGLDBench/case3_PD.png"  
+						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
+						onclick="zoomImage(this, 3)"
+				>
+			</figure>
+		</div>
+		
+		<div style="display: inline-block; width: 24%; text-align: center;">
+			<figure>
+				<img src="medias_SGLDBench/case3_isosurface.png" 
+						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
+						onclick="zoomImage(this, 3)"
+					>
+			</figure>
+		</div>
+		
+		<div style="display: inline-block; width: 24%; text-align: center;">
+			<figure>
+				<img src="medias_SGLDBench/case3_volume.png" 
+						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
+						onclick="zoomImage(this, 3)"
+					>
+			</figure>
+		</div>
+		
+		<div style="display: inline-block; width: 24%; text-align: center;">
+			<figure>
+				<img src="medias_SGLDBench/case3_volume2.png" 
+						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
+						onclick="zoomImage(this, 3)"
+					>
+			</figure>
+		</div>		
+    </div>
+
+    <div class="case">
+		<h3>Case 2: Infill Design for a Molar</h3>
+		<p>
+			<strong>Context:</strong> Given a geometric model of a molar described in a triangular surface mesh, one can generate different
+				types of infill patterns under the same material budget (e.g., 50%) and compare the stiffness measured by the compliance value (C).
+		</p> 
+	  
+		<div style="width: 100%; text-align: center;">
+			<div style="display: inline-block; width: 12%; text-align: center; position: relative;">
+				<figure>
+					<img 
+						src="medias_SGLDBench/case2_domain.png" 
+						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
+						onclick="zoomImage(this, 3)"
+					>
+					<figcaption>Design domain</figcaption>
+				</figure>
+			</div>
+				
+			<div style="display: inline-block; width: 12%; text-align: center; position: relative;">
+				<figure>
+					<img 
+						src="medias_SGLDBench/case2_PD.png" 
+						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
+						onclick="zoomImage(this, 3)"
+					>
+					<figcaption>FEA model</figcaption>
+				</figure>
+			</div>		
+		
+			<div style="display: inline-block; width: 12%; text-align: center; position: relative;">
+				<figure>
+					<img 
+						src="medias_SGLDBench/case2_mtd1_TO.png" 
+						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
+						onclick="zoomImage(this, 3)"
+					>
+					<figcaption>C=1.26C0</figcaption>
+				</figure>
+			</div>
+				
+			<div style="display: inline-block; width: 12%; text-align: center; position: relative;">
+				<figure>
+					<img 
+						src="medias_SGLDBench/case2_mtd2_PIO.png" 
+						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
+						onclick="zoomImage(this, 3)"
+					>
+					<figcaption>C=1.59C0</figcaption>
+				</figure>
+			</div>
+				
+			<div style="display: inline-block; width: 12%; text-align: center; position: relative;">
+				<figure>
+					<img 
+						src="medias_SGLDBench/case2_mtd3_Voronoi.png" 
+						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
+						onclick="zoomImage(this, 3)"
+					>
+					<figcaption>C=1.92C0</figcaption>
+				</figure>
+			</div>
+			
+			<div style="display: inline-block; width: 12%; text-align: center; position: relative;">
+				<figure>
+					<img 
+						src="medias_SGLDBench/case2_mtd4_PSLs.png" 
+						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
+						onclick="zoomImage(this, 3)"
+					>
+					<figcaption>C=1.86C0</figcaption>
+				</figure>
+			</div>
+	
+			<div style="display: inline-block; width: 12%; text-align: center; position: relative;">
+				<figure>
+					<img 
+						src="medias_SGLDBench/case2_mtd5_Gao.png" 
+						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
+						onclick="zoomImage(this, 3)"
+					>
+					<figcaption>C=2.49C0</figcaption>
+				</figure>
+			</div>
+	
+			<div style="display: inline-block; width: 12%; text-align: center; position: relative;">
+				<figure>
+					<img 
+						src="medias_SGLDBench/case2_mtd6_Arora.png" 
+						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
+						onclick="zoomImage(this, 3)"
+					>
+					<figcaption>C=3.25C0</figcaption>
+				</figure>
+			</div>			
+		</div>
+	</div>
+	
+	  <!--
+	  <table width="100%">
+	  <tr>
+	  	<td align="center">
+	  	<figure>
+	  		<img src="medias_SGLDBench/2025-Publication-TVCG-thumbnail.png" width="100%">
+	  		<figcaption>Caption 1</figcaption>
+	  	</figure>
+	  	</td>
+	  	<td align="center">
+	  	<figure>
+	  		<img src="medias_SGLDBench/2025-Publication-TVCG-thumbnail.png" width="100%">
+	  		<figcaption>Caption 2</figcaption>
+	  	</figure>
+	  	</td>
+	  	<td align="center">
+	  	<figure>
+	  		<img src="medias_SGLDBench/2025-Publication-TVCG-thumbnail.png" width="100%">
+	  		<figcaption>Caption 3</figcaption>
+	  	</figure>
+	  	</td>
+	  	<td align="center">
+	  	<figure>
+	  		<img src="medias_SGLDBench/2025-Publication-TVCG-thumbnail.png" width="100%">
+	  		<figcaption>Caption 1</figcaption>
+	  	</figure>
+	  	</td>			
+	  </tr>
+	  </table>
+	  <p>
+		<a href="datasets/case1.h5">[Download Dataset]</a> |
+        <a href="code/snippets/case1_runner.py">[Python Script]</a>
+      </p>
+	  -->
+
+    <div class="case">
+		<h3>Case 1: Topology Optimization Practices with SGLDBench</h3>
+		<p>
+			<strong>Contexts:</strong> With SGLDBench, beginners stepping into high-resolution topology optimization can quickly create topology-optimized 
+				high-resolution designs, exploring the effects of different boundary conditions, simulation resolutions, filtering radius. 
+				SGLDBench also integrates several simple shapes (cuboid, L-shape, cylinder) to facilitate this.
+		</p>
+		
+		<li><strong>Practice 1.1</strong> Same cuboid design domain but with different boundary conditions. Resolution: 300x150x150</li>
+		<div style="display: inline-block; width: 24%; text-align: center;">
+			<figure>
+				<img src="medias_SGLDBench/case1_1A.png" 
+						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
+						onclick="zoomImage(this, 3)"
+				>
+				<!--<figcaption>Caption</figcaption>-->
+			</figure>
+		</div>
+		
+		<div style="display: inline-block; width: 24%; text-align: center;">
+			<figure>
+				<img src="medias_SGLDBench/case1_1B.png" 
+						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
+						onclick="zoomImage(this, 3)"
+				>
+				<!--<figcaption>Caption</figcaption>-->
+			</figure>
+		</div>
+		
+		<div style="display: inline-block; width: 24%; text-align: center;">
+			<figure>
+				<img src="medias_SGLDBench/case1_1C.png" 
+						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
+						onclick="zoomImage(this, 3)"
+				>
+				<!--<figcaption>Caption</figcaption>-->
+			</figure>
+		</div>
+		
+		<div style="display: inline-block; width: 24%; text-align: center;">
+			<figure>
+				<img src="medias_SGLDBench/case1_1D.png" 
+						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
+						onclick="zoomImage(this, 3)"
+				>
+				<!--<figcaption>Caption</figcaption>-->
+			</figure>
+		</div>		
+		
+		<li><strong>Practice 1.2</strong> Same optimization problem with different simulaton resolutions</li>
+		<div style="display: inline-block; width: 24%; text-align: center;">
+			<figure>
+				<img src="medias_SGLDBench/case1_2_R100.png" 
+						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
+						onclick="zoomImage(this, 3)"
+				>
+				<figcaption>100x50x50, C=12.22C0</figcaption>
+			</figure>
+		</div>
+		
+		<div style="display: inline-block; width: 24%; text-align: center;">
+			<figure>
+				<img src="medias_SGLDBench/case1_2_R200.png" 
+						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
+						onclick="zoomImage(this, 3)"
+				>
+				<figcaption>200x100x100, C=9.64C0</figcaption>
+			</figure>
+		</div>
+		
+		<div style="display: inline-block; width: 24%; text-align: center;">
+			<figure>
+				<img src="medias_SGLDBench/case1_2_R400.png" 
+						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
+						onclick="zoomImage(this, 3)"
+				>
+				<figcaption>400x200x200, C=9.20C0</figcaption>
+			</figure>
+		</div>
+		
+		<div style="display: inline-block; width: 24%; text-align: center;">
+			<figure>
+				<img src="medias_SGLDBench/case1_2_R800.png" 
+						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
+						onclick="zoomImage(this, 3)"
+				>
+				<figcaption>800x400x400, C=7.91C0</figcaption>
+			</figure>
+		</div>		
+		
+		<li><strong>Practice 1.3</strong> Same optimization problem with a different filter radius (r). Resolution: 500x250x250</li>
+		<div style="width: 100%; text-align: center;">
+			<div style="display: inline-block; width: 24%; text-align: center; position: relative;">
+				<figure>
+					<img 
+						src="medias_SGLDBench/case1_3_r2.png" 
+						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
+						onclick="zoomImage(this, 3)"
+					>
+					<figcaption>r=2, C=8.08C0</figcaption>
+				</figure>
+			</div>
+			
+			<div style="display: inline-block; width: 24%; text-align: center; position: relative;">
+				<figure>
+					<img 
+						src="medias_SGLDBench/case1_3_r4.png" 
+						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
+						onclick="zoomImage(this, 3)"
+					>
+					<figcaption>r=4, C=8.59C0</figcaption>
+				</figure>
+			</div>			
+
+			<div style="display: inline-block; width: 24%; text-align: center; position: relative;">
+				<figure>
+					<img 
+						src="medias_SGLDBench/case1_3_r8.png" 
+						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
+						onclick="zoomImage(this, 3)"
+					>
+					<figcaption>r=8, C=9.78C0</figcaption>
+				</figure>
+			</div>			
+		</div>
+		
+		
+		<li><strong>Practice 1.4</strong> Others</li>
+		<div style="width: 100%; text-align: center;">
+			<div style="display: inline-block; width: 20%; text-align: center; position: relative;">
+				<figure>
+					<img 
+						src="medias_SGLDBench/case1_4_Left.png" 
+						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
+						onclick="zoomImage(this, 3)"
+					>
+				</figure>
+			</div>
+			
+			<div style="display: inline-block; width: 20%; text-align: center; position: relative;">
+				<figure>
+					<img 
+						src="medias_SGLDBench/case1_4_Middle.png" 
+						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
+						onclick="zoomImage(this, 3)"
+					>
+				</figure>
+			</div>			
+
+			<div style="display: inline-block; width: 20%; text-align: center; position: relative;">
+				<figure>
+					<img 
+						src="medias_SGLDBench/TBA.png" 
+						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
+						onclick="zoomImage(this, 3)"
+					>
+				</figure>
+			</div>			
+		</div>				
+      <!--
+	  <p>
+		<a href="datasets/case1.h5">[Download Dataset]</a> |
+        <a href="code/snippets/case1_runner.py">[Python Script]</a>
+      </p>
+	  -->
+    </div>	
+	</section>
+
+	<footer>
+		<p><a href="index.html">← Back to Home</a></p>
+	</footer>
+
+	<!-- Inline JavaScript -->
+	<script>
+	function zoomImage(img, scale) {
+		// Reset all other images
+		document.querySelectorAll("img").forEach(el => {
+			if (el !== img) {
+			el.style.transform = "scale(1)";
+			el.style.zIndex = "1";
+			}
+		});
+		
+		// Toggle zoom on this image
+		if (img.style.transform === `scale(${scale})`) {
+			img.style.transform = "scale(1)";
+			img.style.zIndex = "1";
+		} else {
+			img.style.transform = `scale(${scale})`;
+			img.style.zIndex = "999";
+		}
+	}
+	</script>
+
+</body>
+</html>
