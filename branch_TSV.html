@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-		<title>SGLDBench</title>
+		<title>3D-TSV</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Optional external stylesheet -->
 	<link rel="stylesheet" href="style.css">
@@ -40,34 +40,44 @@
 </head>
 
 <body>
-	<h1>SGLDBench</h1>
+	<h1>3D-TSV</h1>
 	<p>
 		<strong>Code Repository:</strong>
-		<a href="https://github.com/PSLer/SGLDBench" target="_blank">GitHub – SGLDBench</a>
+		<a href="https://github.com/PSLer/3D-TSV" target="_blank">GitHub – 3D-TSV</a>
 		<br>
 		<!--<strong>Contributors:</strong> Junpeng Wang, Dennis Bukenberger, Simon Niedermayr <br>-->
-		<strong>Contact:</strong> junpeng.wang@tum.de | dennis.bukenberger@tum.de
+		<strong>Contact:</strong> junpeng.wang@tum.de
 	</p>
 
 	<section>
 		<h2>Description</h2>
 		<p>
-			<span style="color: green;"><i>This page is created to showcase and exchange the use of SGLDBench. 
+			<span style="color: green;"><i>This page is created to showcase and exchange the use of 3D-TSV and its accessories. 
 				Reporting bugs, leaving comments, and sharing cool application cases are warmly welcomed!</i></span>
 		</p>
-		<p>SGLDBench is a comprehensive benchmark suite for applying and evaluating material layout strategies to generate stiff, lightweight structural designs 
-			in 3D domains, with a special focus on high-resolution designs.</p>
-		<p>SGLDBench provides a seamlessly integrated simulation and analysis framework, including six reference strategies and a scalable multigrid 
-			elasticity solver to efficiently execute these strategies and validate the stiffness of their results.  </p>
-		<p>SGLDBench is primarily implemented using MATLAB, but also has external calls to C++ code through the MEX interface for performance reasons, 
-			and to executables and Python codes for functionality reasons, which provides a handy stencil for future extensions.</p>
-		<p>For an overview of this tool, please have a look at the <a href="https://github.com/PSLer/SGLDBench/blob/main/README.md" target="_blank">README</a> 
-			of the code repository and watch the guide <a href="https://ieeexplore.ieee.org/document/11015568/media#media" target="_blank">videos</a>.</p>
+		<p>3D-TSV is a suite of trajectory-based stress tensor visualizers, which takes <i>Principal Stress Line (PSL)</i> as the basic visual abstract, 
+			and with a special focus on the domain-filling and evenly spaced placement of PSLs.</p>
+		<p>3D-TSV was originally developed to work with the node-wise stress tensor field of a 1st-order hexahedral mesh, which can either be
+			a Cartesian mesh or an unstructured mesh. 
+			With subsequent efforts, three new features are introduced to 3D-TSV. (i) Support to the 1st-order tetrahedral mesh; (ii) Support 
+			to element-wise stress tensor fields; (iii) Support to 1st-order quadrilateral and triangular meshes in 2D. </p>
+		<p>3D-TSV is primarily implemented using MATLAB and can be used in varies ways. For advanced visual quality control of the result, one can take 
+			3D-TSV as a backend and call it from a OpenGL-based frontend line visualizer, as demonstrated in the paper. For common use cases, one can simply
+			run it in a pure MATLAB environment, which can either be accessed through a GUI or a script. Besides, we also provide the "easy-to-use" versions
+			for application scenarios where one simply wants to see the PSLs quickly, to achieve this, the kernal functions of 3D-TSV are integrated into a 
+			single MATLAB script and several control parameters are omitted.</p>
+		<p>For an overview of this tool, please have a look at the <a href="https://github.com/PSLer/3D-TSV/blob/main/README.md" target="_blank">README</a> 
+			of the code repository and watch the guide <a href="https://www.youtube.com/watch?v=99Jn938ZoVk" target="_blank">videos</a>.</p>
 	</section>
 
 	<section>
 	<h2>Updates</h2>
 	<ul>
+		<li><strong>2025-07-04:</strong> <span style="color: red;"><strong>Especially to the old users:</strong> </span> the format of the dataset files are
+			slightly adjusted to fit the newly introduced functionalities, and a more intuitive extension (.TSV) of the input file is used, please refer to 
+			the updated datasets in the code repository.</li>
+		<li><strong>2025-07-03:</strong> Support to element-wise data is added.</li>
+		<li><strong>2025-07-01:</strong> Support to 1st-order Tet-mesh data is added.</li>
 		<li><strong>2025-06-30:</strong> Page is created.</li>
 		<!--
 			<li><strong>2025-05-10:</strong> Improved FEM solvers and added example scripts in MATLAB and Python</li>
@@ -76,45 +86,54 @@
 	</section>
 
 	<section>
-	<h2>What can SGLDBench do?</h2>
+	<h2>What can 3D-TSV do?</h2>
 	<ul>
-		<li>High-resolution <i>Topology Optimization</i> or <a href="https://ieeexplore.ieee.org/abstract/document/7829422" target="_blank"><i>Porous 
-			Infill Optimization</i></a> in 3D? ✔️</li>
-		<li>Design and evaluation of stiff lightweight structure in 3D using <i>Stress-aware Graded Voronoi Diagram</i>, 
-			<a href="https://doi.org/10.1115/DETC2022-89030" target="_blank"><i>Principal Stress Lines</i></a> (PSLs), 
-				<a href="https://ieeexplore.ieee.org/abstract/document/8823060" target="_blank"><i>Stress-aligned Conforming Lattices</i></a>, 
-					and <a href="https://dl.acm.org/doi/abs/10.1145/3328939.3328999" target="_blank"><i>Volumetric Michell Trusses</i></a>? ✔️</li>
-		<li>Evaluating stiffness of external structural designs depicted in voxels, node-edge graph, tet- or hex-mesh? ✔️</li>
-		<li>Evaluating stiffness of structural designs when loading direction is changed? ✔️</li>
-		<li>Simply visualizing a structural design depicted in voxels and written in .NIFTI format? ✔️</li>
+		<li>Domain-filling and evenly spaced PSLs generation of a stress field defined at the vertices of a 1st-order 
+			tetrahedral or hexahedral volume mesh in 3D. ✔️</li>
+		<li>Domain-filling and evenly spaced PSLs generation of a stress field defined at the vertices of a 1st-order 
+			triangular or quadrilateral planar mesh in 2D. ✔️</li>
+		<li>Stress topology analysis of a stress field defined at the vertices of a 1st-order triangular or quadrilateral 
+			planar mesh in 2D. I.e., capturing degenerate point(s) and create topological skeleton. ✔️</li>
+		<li>Domain-filling and evenly spaced PSLs generation of a stress field defined per-element of a 1st-order 
+			tetrahedral or hexahedral volume mesh in 3D or Triangular or quadrilateral planar mesh in 2D. ✔️</li>
+		<li>Stress fields simulated at the hybrid meshes are not supported for now. ❌</li>
 	</ul>
 	</section>
 
 	<section>
 	<h2>Data Format</h2>
 	<ul>
-		<li>SGLDBench takes triangular surface meshes (.obj, .ply, .stl) as input to construct the voxelized 
-			domain for elasticity simulation. </li>
-		<li>SGLDBench introduces a tailored ASCII File (.TopVoxel) to exchange (I/O) the voxel FEA model, including 
+		<li>3D-TSV defines a general ASCII file (.TSV) to input stress field from various unstructured meshes, including 
+			<i>stress data type (node-wise or element-wise)</i>, 
+			<i>mesh type (hexahedral, tetrahedral, quadrilateral, or triangular)</i>, 
+			<i>mesh info (vertices, elements)</i>, 
+			<i>loads and fixations (optional)</i>, 
+			<i>Cartesian stress info (by order Sigma_xx, Sigma_yy, Sigma_zz, Sigma_yz, Sigma_zx, Sigma_xy in order)</i>
 			solid voxels/Elements, node-wise boundary conditions, per-voxel density values (optional), and passive 
 			elements if necessary. Both element and node information are stored as the indices of the target 
 			entities in the corresponding binary volume data (<i>V</i>) in Row-Column-Page order, refer to 
 			<i>indices=find(V)</i> in MATLAB.</li>
-		<li>External lightweight structural designs depicted in a node-edge graph (.obj), tet-, or 
-			hex-mesh (.vtk, .mesh) can be imported into SGLDBench for stiffness evaluation by voxelizing 
-			graph/mesh edges</li>
-		<li>Strucctural designs made in SGLDBench are depicted in a volume data and exported in the ".NIFTI" format
-		for downstream operations.</li>
+		<li> For stress field simulated on a Cartesian mesh in 3D (commonly seen in structural topology optimization),
+			3D-TSV utilizes a tailored ASCII file (.TSVcarti) for stress field input, which can save data size, and more importantly, benefiting
+			PSL tracing because of the clean topology of a Cartesian mesh. This file includes:
+			<i>stress data type (node-wise or element-wise)</i>, 
+			<i>mesh info (volume resolutions, bounding box, indices of the "solid" elements in the volume)</i>,
+			<i>loads and fixations (optional)</i>, 
+			<i>Cartesian stress info, as above</i>. 
+			The element information is stored as the indices of the target entities in the corresponding volume data (<i>V</i>) in 
+			Row-Column-Page order, refer to <i>indices=find(V)</i> in MATLAB.</li>
+		<li>3D-TSV also provides guidelines on how to extract the required stress information from commericial CAE packages like ANSYS, ABAQUS, and PERMAS </li>
+		<li>The generated PSLs and the corresponding silhouette of the domain can be exported to a ".dat" file.</li>
 	</ul>
 	</section>
 
 	<section>
 	<h2>Related Publication</h2>
 	<p>
-		<strong>Title:</strong> "SGLDBench: A Benchmark Suite for Stress-Guided Lightweight 3D Designs"<br>
-		<strong>Authors:</strong> <b>Junpeng Wang</b>, Dennis Bukenberger, Simon Niedermayr, Christoph Neuhauser, Jun Wu, Rüdiger Westermann<br>
-		<strong>Venue:</strong> IEEE Transactions on Visualization and Computer Graphics, 2025<br>
-		<a href="https://ieeexplore.ieee.org/document/11015568" target="_blank">[Read the Paper]</a>
+		<strong>Title:</strong> "3D-TSV: The 3D Trajectory-based Stress Visualizer"<br>
+		<strong>Authors:</strong> Junpeng Wang, Christoph Neuhauser, Jun Wu, Rüdiger Westermann<br>
+		<strong>Venue:</strong> Advances in Engineering Software, 2022<br>
+		<a href="https://doi.org/10.1016/j.advengsoft.2022.103144" target="_blank">[Read the Paper]</a>
 	</p>
 	</section>
   
@@ -128,337 +147,210 @@
 	<section>
     <h2>Demonstration Cases</h2>
     <div class="case">
-		<h3>Case 3: Creating a bone-mimicking infill for a spine model via porous infill optimization </h3>
-		
-		<div style="display: inline-block; width: 24%; text-align: center;">
-			<figure>
-				<img src="medias_SGLDBench/case3_PD.png"  
-						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
-						onclick="zoomImage(this, 3)"
-				>
-			</figure>
-		</div>
-		
-		<div style="display: inline-block; width: 24%; text-align: center;">
-			<figure>
-				<img src="medias_SGLDBench/case3_isosurface.png" 
-						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
-						onclick="zoomImage(this, 3)"
-					>
-			</figure>
-		</div>
-		
-		<div style="display: inline-block; width: 24%; text-align: center;">
-			<figure>
-				<img src="medias_SGLDBench/case3_volume.png" 
-						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
-						onclick="zoomImage(this, 3)"
-					>
-			</figure>
-		</div>
-		
-		<div style="display: inline-block; width: 24%; text-align: center;">
-			<figure>
-				<img src="medias_SGLDBench/case3_volume2.png" 
-						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
-						onclick="zoomImage(this, 3)"
-					>
-			</figure>
-		</div>		
-    </div>
-
-    <div class="case">
-		<h3>Case 2: Infill Design for a Molar</h3>
+		<h3>Case 3: Visualizations in 2D </h3>
 		<p>
-			<strong>Context:</strong> Given a geometric model of a molar described in a triangular surface mesh, one can generate different
-				types of infill patterns under the same material budget (e.g., 50%) and compare the stiffness measured by the compliance value (C).
-		</p> 
-	  
+			<strong>Context:</strong> The PSL placement algorithm of 3D-TSV seamlessly works for 2D cases. Especially, it can be combined with 
+				stress topology analysis for improved placement regularity and better represen.
+		</p> 		
 		<div style="width: 100%; text-align: center;">
-			<div style="display: inline-block; width: 12%; text-align: center; position: relative;">
+			<div style="display: inline-block; width: 24%; text-align: center; position: relative;">
 				<figure>
 					<img 
-						src="medias_SGLDBench/case2_domain.png" 
+						src="medias_TSV/case3_PD.png" 
 						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
 						onclick="zoomImage(this, 3)"
 					>
-					<figcaption>Design domain</figcaption>
+					<figcaption>FEM model</figcaption>
 				</figure>
 			</div>
 				
-			<div style="display: inline-block; width: 12%; text-align: center; position: relative;">
+			<div style="display: inline-block; width: 24%; text-align: center; position: relative;">
 				<figure>
 					<img 
-						src="medias_SGLDBench/case2_PD.png" 
+						src="medias_TSV/case3_PSLs_plain.png" 
 						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
 						onclick="zoomImage(this, 3)"
 					>
-					<figcaption>FEA model</figcaption>
+					<figcaption>PSLs by TSV</figcaption>
 				</figure>
 			</div>		
 		
-			<div style="display: inline-block; width: 12%; text-align: center; position: relative;">
+			<div style="display: inline-block; width: 24%; text-align: center; position: relative;">
 				<figure>
 					<img 
-						src="medias_SGLDBench/case2_mtd1_TO.png" 
+						src="medias_TSV/case3_stressTopology.png" 
 						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
 						onclick="zoomImage(this, 3)"
 					>
-					<figcaption>C=1.26C0</figcaption>
+					<figcaption>Stress field topology</figcaption>
 				</figure>
 			</div>
 				
-			<div style="display: inline-block; width: 12%; text-align: center; position: relative;">
+			<div style="display: inline-block; width: 24%; text-align: center; position: relative;">
 				<figure>
 					<img 
-						src="medias_SGLDBench/case2_mtd2_PIO.png" 
+						src="medias_TSV/case3_PSLs_hybrid.png" 
 						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
 						onclick="zoomImage(this, 3)"
 					>
-					<figcaption>C=1.59C0</figcaption>
+					<figcaption>PSLs by TSV with top. ana.</figcaption>
 				</figure>
-			</div>
-				
-			<div style="display: inline-block; width: 12%; text-align: center; position: relative;">
-				<figure>
-					<img 
-						src="medias_SGLDBench/case2_mtd3_Voronoi.png" 
-						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
-						onclick="zoomImage(this, 3)"
-					>
-					<figcaption>C=1.92C0</figcaption>
-				</figure>
-			</div>
-			
-			<div style="display: inline-block; width: 12%; text-align: center; position: relative;">
-				<figure>
-					<img 
-						src="medias_SGLDBench/case2_mtd4_PSLs.png" 
-						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
-						onclick="zoomImage(this, 3)"
-					>
-					<figcaption>C=1.86C0</figcaption>
-				</figure>
-			</div>
-	
-			<div style="display: inline-block; width: 12%; text-align: center; position: relative;">
-				<figure>
-					<img 
-						src="medias_SGLDBench/case2_mtd5_Gao.png" 
-						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
-						onclick="zoomImage(this, 3)"
-					>
-					<figcaption>C=2.49C0</figcaption>
-				</figure>
-			</div>
-	
-			<div style="display: inline-block; width: 12%; text-align: center; position: relative;">
-				<figure>
-					<img 
-						src="medias_SGLDBench/case2_mtd6_Arora.png" 
-						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
-						onclick="zoomImage(this, 3)"
-					>
-					<figcaption>C=3.25C0</figcaption>
-				</figure>
-			</div>			
-		</div>
-	</div>
-	
-	  <!--
-	  <table width="100%">
-	  <tr>
-	  	<td align="center">
-	  	<figure>
-	  		<img src="medias_SGLDBench/2025-Publication-TVCG-thumbnail.png" width="100%">
-	  		<figcaption>Caption 1</figcaption>
-	  	</figure>
-	  	</td>
-	  	<td align="center">
-	  	<figure>
-	  		<img src="medias_SGLDBench/2025-Publication-TVCG-thumbnail.png" width="100%">
-	  		<figcaption>Caption 2</figcaption>
-	  	</figure>
-	  	</td>
-	  	<td align="center">
-	  	<figure>
-	  		<img src="medias_SGLDBench/2025-Publication-TVCG-thumbnail.png" width="100%">
-	  		<figcaption>Caption 3</figcaption>
-	  	</figure>
-	  	</td>
-	  	<td align="center">
-	  	<figure>
-	  		<img src="medias_SGLDBench/2025-Publication-TVCG-thumbnail.png" width="100%">
-	  		<figcaption>Caption 1</figcaption>
-	  	</figure>
-	  	</td>			
-	  </tr>
-	  </table>
-	  <p>
-		<a href="datasets/case1.h5">[Download Dataset]</a> |
-        <a href="code/snippets/case1_runner.py">[Python Script]</a>
-      </p>
-	  -->
+			</div>		
+		</div>	
+    </div>
 
     <div class="case">
-		<h3>Case 1: Topology Optimization Practices with SGLDBench</h3>
+		<h3>Case 2: Work with datasets from unstructured hex- and tet-meshes </h3>
 		<p>
-			<strong>Contexts:</strong> With SGLDBench, beginners stepping into high-resolution topology optimization can quickly create topology-optimized 
-				high-resolution designs, exploring the effects of different boundary conditions, simulation resolutions, filtering radius. 
-				SGLDBench also integrates several simple shapes (cuboid, L-shape, cylinder) to facilitate this.
+			<strong>Context:</strong> 3D-TSV can be used to generate PSLs of stress fields that are simulated at a hex- or tet-mesh, 
+				and enables the importance-based PSLs selection. Besides, the user can also specify the PSLs to be shown in ribbons that 
+				convey the other principal stress directions and potential singularities (i.e., switch of different principal stress directions).
+		</p> 
+	  
+		<div style="width: 100%; text-align: center;">
+			<div style="display: inline-block; width: 24%; text-align: center; position: relative;">
+				<figure>
+					<img 
+						src="medias_TSV/case2_hex_mesh.png" 
+						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
+						onclick="zoomImage(this, 3)"
+					>
+					<figcaption>FEM model (Hex-mesh)</figcaption>
+				</figure>
+			</div>
+				
+			<div style="display: inline-block; width: 24%; text-align: center; position: relative;">
+				<figure>
+					<img 
+						src="medias_TSV/case2_hex_PSLs_all.png" 
+						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
+						onclick="zoomImage(this, 3)"
+					>
+					<figcaption>Full PSLs</figcaption>
+				</figure>
+			</div>		
+		
+			<div style="display: inline-block; width: 24%; text-align: center; position: relative;">
+				<figure>
+					<img 
+						src="medias_TSV/case2_hex_PSLs_LoD.png" 
+						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
+						onclick="zoomImage(this, 3)"
+					>
+					<figcaption>Selected PSLs</figcaption>
+				</figure>
+			</div>
+				
+			<div style="display: inline-block; width: 24%; text-align: center; position: relative;">
+				<figure>
+					<img 
+						src="medias_TSV/case2_hex_PSLs_LoD_ribbon.png" 
+						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
+						onclick="zoomImage(this, 3)"
+					>
+					<figcaption>Major PSLs shown in ribbons</figcaption>
+				</figure>
+			</div>		
+		</div>
+		
+		<div style="width: 100%; text-align: center;">
+			<div style="display: inline-block; width: 26%; text-align: center; position: relative;">
+				<figure>
+					<img 
+						src="medias_TSV/case2_tet_mesh.png" 
+						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
+						onclick="zoomImage(this, 3)"
+					>
+					<figcaption>FEM model (Tet-mesh)</figcaption>
+				</figure>
+			</div>
+				
+			<div style="display: inline-block; width: 24%; text-align: center; position: relative;">
+				<figure>
+					<img 
+						src="medias_TSV/case2_tet_PSLs_all.png" 
+						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
+						onclick="zoomImage(this, 3)"
+					>
+					<figcaption>Full PSLs</figcaption>
+				</figure>
+			</div>		
+		
+			<div style="display: inline-block; width: 24%; text-align: center; position: relative;">
+				<figure>
+					<img 
+						src="medias_TSV/case2_tet_PSLs_LoD.png" 
+						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
+						onclick="zoomImage(this, 3)"
+					>
+					<figcaption>Selected PSLs</figcaption>
+				</figure>
+			</div>
+				
+			<div style="display: inline-block; width: 24%; text-align: center; position: relative;">
+				<figure>
+					<img 
+						src="medias_TSV/case2_tet_PSLs_LoD_ribbon.png" 
+						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
+						onclick="zoomImage(this, 3)"
+					>
+					<figcaption>Minor PSLs shown in ribbons</figcaption>
+				</figure>
+			</div>		
+		</div>		
+	</div>
+
+    <div class="case">
+		<h3>Case 1: Trajectory-based stress tensor visualization of stress fields simulated at Cartesian hexahedral meshes</h3>
+		<p>
+			<strong>Contexts:</strong> Cartesian hexahedral mesh is frequently used in structural topology optimization in 3D, assuming one wants
+				to investigate the stress tensor field in the optimized structure and compare it to the corresponding one from the solid domain.
 		</p>
-		
+		<!--
 		<li><strong>Practice 1.1</strong> Same cuboid design domain but with different boundary conditions. Resolution: 300x150x150</li>
-		<div style="display: inline-block; width: 24%; text-align: center;">
-			<figure>
-				<img src="medias_SGLDBench/case1_1A.png" 
-						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
-						onclick="zoomImage(this, 3)"
-				>
-				<!--<figcaption>Caption</figcaption>-->
-			</figure>
-		</div>
-		
-		<div style="display: inline-block; width: 24%; text-align: center;">
-			<figure>
-				<img src="medias_SGLDBench/case1_1B.png" 
-						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
-						onclick="zoomImage(this, 3)"
-				>
-				<!--<figcaption>Caption</figcaption>-->
-			</figure>
-		</div>
-		
-		<div style="display: inline-block; width: 24%; text-align: center;">
-			<figure>
-				<img src="medias_SGLDBench/case1_1C.png" 
-						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
-						onclick="zoomImage(this, 3)"
-				>
-				<!--<figcaption>Caption</figcaption>-->
-			</figure>
-		</div>
-		
-		<div style="display: inline-block; width: 24%; text-align: center;">
-			<figure>
-				<img src="medias_SGLDBench/case1_1D.png" 
-						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
-						onclick="zoomImage(this, 3)"
-				>
-				<!--<figcaption>Caption</figcaption>-->
-			</figure>
-		</div>		
-		
-		<li><strong>Practice 1.2</strong> Same optimization problem with different simulaton resolutions</li>
-		<div style="display: inline-block; width: 24%; text-align: center;">
-			<figure>
-				<img src="medias_SGLDBench/case1_2_R100.png" 
-						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
-						onclick="zoomImage(this, 3)"
-				>
-				<figcaption>100x50x50, C=12.22C0</figcaption>
-			</figure>
-		</div>
-		
-		<div style="display: inline-block; width: 24%; text-align: center;">
-			<figure>
-				<img src="medias_SGLDBench/case1_2_R200.png" 
-						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
-						onclick="zoomImage(this, 3)"
-				>
-				<figcaption>200x100x100, C=9.64C0</figcaption>
-			</figure>
-		</div>
-		
-		<div style="display: inline-block; width: 24%; text-align: center;">
-			<figure>
-				<img src="medias_SGLDBench/case1_2_R400.png" 
-						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
-						onclick="zoomImage(this, 3)"
-				>
-				<figcaption>400x200x200, C=9.20C0</figcaption>
-			</figure>
-		</div>
-		
-		<div style="display: inline-block; width: 24%; text-align: center;">
-			<figure>
-				<img src="medias_SGLDBench/case1_2_R800.png" 
-						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
-						onclick="zoomImage(this, 3)"
-				>
-				<figcaption>800x400x400, C=7.91C0</figcaption>
-			</figure>
-		</div>		
-		
-		<li><strong>Practice 1.3</strong> Same optimization problem with a different filter radius (r). Resolution: 500x250x250</li>
+		-->
 		<div style="width: 100%; text-align: center;">
-			<div style="display: inline-block; width: 24%; text-align: center; position: relative;">
+			<div style="display: inline-block; width: 35%; text-align: center;">
 				<figure>
-					<img 
-						src="medias_SGLDBench/case1_3_r2.png" 
-						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
-						onclick="zoomImage(this, 3)"
+					<img src="medias_TSV/case1_solid.png" 
+							style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
+							onclick="zoomImage(this, 3)"
 					>
-					<figcaption>r=2, C=8.08C0</figcaption>
+					<figcaption>Solid domain</figcaption>
 				</figure>
 			</div>
 			
-			<div style="display: inline-block; width: 24%; text-align: center; position: relative;">
+			<div style="display: inline-block; width: 38%; text-align: center;">
 				<figure>
-					<img 
-						src="medias_SGLDBench/case1_3_r4.png" 
-						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
-						onclick="zoomImage(this, 3)"
+					<img src="medias_TSV/case1_PSLs_solid_B.png" 
+							style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
+							onclick="zoomImage(this, 3)"
 					>
-					<figcaption>r=4, C=8.59C0</figcaption>
+					<figcaption>Major (warm color) and minor (cold) PSLs</figcaption>
 				</figure>
-			</div>			
-
-			<div style="display: inline-block; width: 24%; text-align: center; position: relative;">
-				<figure>
-					<img 
-						src="medias_SGLDBench/case1_3_r8.png" 
-						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
-						onclick="zoomImage(this, 3)"
-					>
-					<figcaption>r=8, C=9.78C0</figcaption>
-				</figure>
-			</div>			
+			</div>		
 		</div>
-		
-		
-		<li><strong>Practice 1.4</strong> Others</li>
 		<div style="width: 100%; text-align: center;">
-			<div style="display: inline-block; width: 20%; text-align: center; position: relative;">
+			<div style="display: inline-block; width: 35%; text-align: center;">
 				<figure>
-					<img 
-						src="medias_SGLDBench/case1_4_Left.png" 
-						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
-						onclick="zoomImage(this, 3)"
+					<img src="medias_TSV/case1_design.png" 
+							style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
+							onclick="zoomImage(this, 3)"
 					>
+					<figcaption>Topology-optimized domain</figcaption>
 				</figure>
 			</div>
 			
-			<div style="display: inline-block; width: 20%; text-align: center; position: relative;">
+			<div style="display: inline-block; width: 38%; text-align: center;">
 				<figure>
-					<img 
-						src="medias_SGLDBench/case1_4_Middle.png" 
-						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
-						onclick="zoomImage(this, 3)"
+					<img src="medias_TSV/case1_PSLs_design_B.png" 
+							style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
+							onclick="zoomImage(this, 3)"
 					>
+					<figcaption>Major and minor PSLs</figcaption>
 				</figure>
-			</div>			
-
-			<div style="display: inline-block; width: 20%; text-align: center; position: relative;">
-				<figure>
-					<img 
-						src="medias_SGLDBench/TBA.png" 
-						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
-						onclick="zoomImage(this, 3)"
-					>
-				</figure>
-			</div>			
-		</div>				
+			</div>		
+		</div>		
       <!--
 	  <p>
 		<a href="datasets/case1.h5">[Download Dataset]</a> |
