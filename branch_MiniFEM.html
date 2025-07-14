@@ -60,9 +60,9 @@
 			my different research-oriented projects. In short, it's not only a dataset generator but also a testbed for my elasticity simulation works. </p>
 		<p>MiniFEM is a MATLAB-only implementation, and its usage follows a command-line style. By simple running the gate-script "./MiniFEM/src/MiniFEM.m", 
 			one can create the FEM model via different ways. Upon this, various simulation tasks can be conducted by calling the corresponding functions 
-			in "./MiniFEM/APP/".</p>
+			in "./MiniFEM/src/APP/".</p>
 		<p>Being aware that MiniFEM is just a personal project, and its expected users are students who are taking FEM-related courses or researchers who 
-		occasionally need to use FEM for their research activities. </p>
+		occasionally need to use FEM for their research activities. For advanced FEM tasks, one should resort to the widely verified implementations.</p>
 	</section>
 
 	<section>
@@ -95,6 +95,8 @@
 			<i>mesh info (vertices, elements)</i>, 
 			<i>loads and fixations (optional)</i>, 
 			<i>material indicator behind each element</i>.</li>
+		<li>The *.MiniFEM datasets can be created through the provided GUIs ("./MiniFEM/src/ApplyBC_2D.m" or ".../ApplyBC_3D.m"), it works by importing
+			the mesh dataset and then applying for boundary conditions interactively.</li>
 		<li>MiniFEM supports I/O of the stress dataset (.TSV) that is used in the stress visualization project 3D-TSV.</li>
 		<li>MiniFEM supports loading the FEM model in *.TopVoxel format, which is used in <a href="branch_SGLDBench.html" target="_blank">SGLDBench</a>, for a comprehensive evaluation (Note that 
 			MiniFEM does not work with large FEM models as SGLDBench does, e.g., > 10M DOFs on 64 GB RAM ) </li>
@@ -107,53 +109,63 @@
     <div class="case">
 		<h3>Case 1: Basic functions demonstration</h3>
 		<p>
-			<strong>Contexts:</strong> TBA.
+			<strong>Contexts:</strong> Taking the provided hexahedral mesh dataset, showing the basic functionalities of MiniFEM.
 		</p>
 		<!--
 		<li><strong>Practice 1.1</strong> Same cuboid design domain but with different boundary conditions. Resolution: 300x150x150</li>
 		-->
 		<div style="width: 100%; text-align: center;">
-			<div style="display: inline-block; width: 35%; text-align: center;">
+			<div style="display: inline-block; width: 19%; text-align: center;">
 				<figure>
-					<img src="medias_MiniFEM/TBA.png" 
+					<img src="medias_MiniFEM/case1_StaticDeformation.png" 
 							style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
 							onclick="zoomImage(this, 3)"
 					>
-					<figcaption>TBA</figcaption>
+					<figcaption>Static Dis.</figcaption>
 				</figure>
 			</div>
 			
-			<div style="display: inline-block; width: 38%; text-align: center;">
+			<div style="display: inline-block; width: 19%; text-align: center;">
 				<figure>
-					<img src="medias_MiniFEM/TBA.png" 
+					<img src="medias_MiniFEM/case1_StressAnalysis.png" 
 							style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
 							onclick="zoomImage(this, 3)"
 					>
-					<figcaption>TBA</figcaption>
-				</figure>
-			</div>		
-		</div>
-		<div style="width: 100%; text-align: center;">
-			<div style="display: inline-block; width: 35%; text-align: center;">
-				<figure>
-					<img src="medias_MiniFEM/TBA.png" 
-							style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
-							onclick="zoomImage(this, 3)"
-					>
-					<figcaption>TBA</figcaption>
+					<figcaption>Stress Ana.</figcaption>
 				</figure>
 			</div>
 			
-			<div style="display: inline-block; width: 38%; text-align: center;">
+			<div style="display: inline-block; width: 19%; text-align: center;">
 				<figure>
-					<img src="medias_MiniFEM/TBA.png" 
+					<img src="medias_MiniFEM/case_FreqResponse.png" 
 							style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
 							onclick="zoomImage(this, 3)"
 					>
-					<figcaption>TBA</figcaption>
+					<figcaption>Freq. Res.</figcaption>
 				</figure>
 			</div>		
-		</div>		
+
+			<div style="display: inline-block; width: 19%; text-align: center;">
+				<figure>
+					<img src="medias_MiniFEM/case1_ModalAnalysis.gif" 
+							style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
+							onclick="zoomImage(this, 3)"
+					>
+					<figcaption>Modal Ana.</figcaption>
+				</figure>
+			</div>		
+
+			<div style="display: inline-block; width: 19%; text-align: center;">
+				<figure>
+					<img src="medias_MiniFEM/case1_TransientAnalysis.gif" 
+							style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
+							onclick="zoomImage(this, 3)"
+					>
+					<figcaption>Transient Ana.</figcaption>
+				</figure>
+			</div>				
+			
+		</div>	
       <!--
 	  <p>
 		<a href="datasets/case1.h5">[Download Dataset]</a> |
