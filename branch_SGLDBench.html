@@ -36,6 +36,20 @@
 		padding-bottom: 1em;
 		border-bottom: 1px solid #ddd;
 		}
+		
+		table {
+		border-collapse: collapse;
+		width: 80%;
+		margin: 20px auto;
+		}
+		th, td {
+		border: 1px solid #aaa;
+		padding: 10px;
+		text-align: left;
+		}
+		th {
+		background-color: #eee;
+		}		
 	</style>
 </head>
 
@@ -68,6 +82,7 @@
 	<section>
 	<h2>Updates</h2>
 	<ul>
+		<li><strong>2025-07-21:</strong> Performance benchmarking is launched.</li>
 		<li><strong>2025-06-30:</strong> Page is created.</li>
 		<!--
 			<li><strong>2025-05-10:</strong> Improved FEM solvers and added example scripts in MATLAB and Python</li>
@@ -122,6 +137,55 @@
 	<h2>Application-specific Branches/Extensions</h2>
 	<u1>
 		<li> TBA </li>
+	</u1>
+	</section>  
+
+	<section>
+	<h2>Benchmarking</h2>
+	<u1>
+    <div class="case">
+		<h3><i><li> Processing Time of Conducting Same Simulation Task but on Different Hardware. </li></i> </h3>
+		<p>
+			One can run <i>"./SGLDBench/QuickAccess/PerformanceBenchmarking.m"</i> for performance benchmarking, where topology optimization is conducted on 
+			a cuboid design domain with resolution 500x250x250, corresponding to about 95 million DOFs, and stopped after 50 iterations. 
+			The convergence threshold of MGCG is 1.0e-3. <span style="color: blue;"><i>Warmly welcome the interested users to share their testing result!</i></span> 
+		</p>		
+		
+	<table style="width: 100%; border-collapse: collapse;">
+	<thead>
+		<tr>
+		<th>Time</th>
+		<th>Platform</th>
+		<th>Contributor</th>
+		<th>Elapsed Time (min)</th>
+		</tr>
+	</thead>
+	<tbody>
+	
+		<tr>
+		<td>2025.07</td>
+		<td><u><i>Laptop (Win11 + MATLAB 2023b)</i></u>. <strong>CPU</strong>: AMD Ryzen 7 8845HS (C8T16, 3.8GHz, L3 cache 16MB); <strong>RAM</strong>: 32GB (DDR5-6400MHz)</td>
+		<td>J. Wang</td>
+		<td>139</td>
+		</tr>
+		
+		<tr>
+		<td>2025.07</td>
+		<td><u><i>Desktop (Win10 + MATLAB 2023b)</i></u>. <strong>CPU</strong>: Intel Xeon W-2235 (C6T12, 3.8GHz, L3 cache 8.2MB); <strong>RAM</strong>: 64GB (DDR4-2933MHz)</td>
+		<td>J. Wang</td>
+		<td>242</td>
+		</tr>
+		
+		<tr>
+		<td>2025.07</td>
+		<td><u><i>Desktop (Win11 + MATLAB 2023b)</i></u>. <strong>CPU</strong>: Intel Core i7-7700K (C4T8, 4.2GHz, L3 cache 8.0MB); <strong>RAM</strong>: 64GB (DDR4-2400MHz)</td>
+		<td>J. Wang</td>
+		<td>325</td>
+		</tr>
+		<!-- Add more rows here -->
+	</tbody>
+	</table>	
+    </div>
 	</u1>
 	</section>  
 
