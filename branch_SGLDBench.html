@@ -79,10 +79,12 @@
 	<section>
 	<h2>Updates</h2>
 	<ul>
-		<li><strong>2025-08-10:</strong> Good News! SGLDBench is awarded the <i><b>Replicability Stamp</b></i> under the 
+		<li><strong>2025-11:</strong> A major performance boost—after integrating coloring and SIMD, the linear system solver now runs about 2x
+			as fast as the original implementation.</li>
+		<li><strong>2025-08:</strong> Good News! SGLDBench is awarded the <i><b>Replicability Stamp</b></i> under the 
 			<a href="https://www.replicabilitystamp.org/" target="_blank">GRSI</a>.</li>
-		<li><strong>2025-07-21:</strong> Performance benchmarking is launched.</li>
-		<li><strong>2025-06-30:</strong> Page is created.</li>
+		<li><strong>2025-07:</strong> Performance benchmarking is launched.</li>
+		<li><strong>2025-06:</strong> Page is created.</li>
 		<!--
 			<li><strong>2025-05-10:</strong> Improved FEM solvers and added example scripts in MATLAB and Python</li>
 		-->
@@ -92,7 +94,7 @@
 	<section>
 	<h2>What can SGLDBench do?</h2>
 	<ul>
-		<li>High-resolution <i>Topology Optimization</i> or <a href="https://ieeexplore.ieee.org/abstract/document/7829422" target="_blank"><i>Porous 
+		<li>High-resolution <i>Topology Optimization</i> and <a href="https://ieeexplore.ieee.org/abstract/document/7829422" target="_blank"><i>Porous 
 			Infill Optimization</i></a> in 3D? ✔️</li>
 		<li>Design and evaluation of stiff lightweight structure in 3D using <i>Stress-aware Graded Voronoi Diagram</i>, 
 			<a href="https://doi.org/10.1115/DETC2022-89030" target="_blank"><i>Principal Stress Lines</i></a> (PSLs), 
@@ -117,7 +119,7 @@
 		<li>External lightweight structural designs depicted in a node-edge graph (.obj), tet-, or 
 			hex-mesh (.vtk, .mesh) can be imported into SGLDBench for stiffness evaluation by voxelizing 
 			graph/mesh edges</li>
-		<li>Strucctural designs made in SGLDBench are depicted in a volume data and exported in the ".NIFTI" format
+		<li>Strucctural designs made in SGLDBench are represented as volume data and exported in the ".NIFTI" format
 		for downstream operations.</li>
 	</ul>
 	</section>
@@ -147,9 +149,10 @@
 		<p>
 			One can run <i>"./SGLDBench/QuickAccess/PerformanceBenchmarking.m"</i> for performance benchmarking, where topology optimization is conducted on 
 			a cuboid design domain with resolution 500x250x250, corresponding to about 95 million DOFs, and stopped after 50 iterations. 
-			The convergence threshold of MGCG is 1.0e-3. <span style="color: blue;"><i>Welcome the interested users to share their testing results!</i></span> 
+			The convergence threshold of MGCG is 1.0e-3.
+			<span style="color: blue;"><i>Timings have been updated according to the improved matrix-free computations.</i></span> 
 		</p>		
-		
+	<!--
 	<table style="width: 100%; border-collapse: collapse;">
 	<thead>
 		<tr>
@@ -163,33 +166,88 @@
 	
 		<tr>
 		<td>2025.07</td>
-		<td><u><i>Laptop (Win11 + MATLAB 2023b)</i></u>. <strong>CPU</strong>: AMD Ryzen 7 8845HS (C8T16, 3.8GHz, L3 cache 16MB); <strong>RAM</strong>: 32GB (DDR5-6400MHz)</td>
+		<td><u><i>Laptop (Win11 + MATLAB 2023b)</i></u>. <strong>CPU</strong>: AMD Ryzen 7 8845HS (C8T16, 3.8GHz, L3 cache 16MB); <strong>RAM</strong>: 32GB (DDR5-6400MHz), 2 Channels</td>
 		<td>J. Wang</td>
 		<td>139</td>
 		</tr>
 		
 		<tr>
 		<td>2025.07</td>
-		<td><u><i>Desktop (Win10 + MATLAB 2023b)</i></u>. <strong>CPU</strong>: Intel Xeon W-2235 (C6T12, 3.8GHz, L3 cache 8.2MB); <strong>RAM</strong>: 64GB (DDR4-2933MHz)</td>
+		<td><u><i>Desktop (Win10 + MATLAB 2023b)</i></u>. <strong>CPU</strong>: Intel Xeon W-2235 (C6T12, 3.8GHz, L3 cache 8.2MB); <strong>RAM</strong>: 64GB (DDR4-2933MHz), 2 Channels</td>
 		<td>J. Wang</td>
 		<td>242</td>
 		</tr>
 		
 		<tr>
 		<td>2025.07</td>
-		<td><u><i>Desktop (Win11 + MATLAB 2023b)</i></u>. <strong>CPU</strong>: Intel Core i7-7700K (C4T8, 4.2GHz, L3 cache 8.0MB); <strong>RAM</strong>: 64GB (DDR4-2400MHz)</td>
+		<td><u><i>Desktop (Win11 + MATLAB 2023b)</i></u>. <strong>CPU</strong>: Intel Core i7-7700K (C4T8, 4.2GHz, L3 cache 8.0MB); <strong>RAM</strong>: 64GB (DDR4-2400MHz), 2 Channels</td>
 		<td>J. Wang</td>
 		<td>325</td>
 		</tr>
+	</tbody>
+	</table>
+	-->
+	<table style="width: 100%; border-collapse: collapse;">
+	<thead>
+		<tr>
+		<th>Time</th>
+		<th>CPU</th>
+		<th>RAM</th>
+		<th>Elapsed Time (min)</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+		<td>2025.11</td>
+		<td><u><i>AMD Ryzen 7 8845HS:</i></u> C8T16, 3.8GHz, L3 cache 16MB, <b>243.2GFLOPs</b></td>
+		<td><u><i>DDR5:</i></u> 6400MHz, 2 Channels, 32GB, <b>102.4GB/s</b></td>
+		<td><s>139</s>, <span style="color: blue;">71</span></td>
+		</tr>
+		
+		<tr>
+		<td>2025.11</td>
+		<td><u><i>Intel Xeon W-2235:</i></u> C6T12, 3.8GHz, L3 cache 8.2MB, <b>182.4GFLOPs</b></td>
+		<td><u><i>DDR4:</i></u> 2933MHz, 2 Channels, 64GB, <b>46.88GB/s</b></td>
+		<td><s>242</s>, <span style="color: blue;">85.8</span> </td>
+		</tr>
+
+		<tr>
+		<td>2025.11</td>
+		<td><u><i>Intel Core i7-7700K:</i></u> C4T8, 4.2GHz, L3 cache 8.0MB, <b>134.4GFLOPs</b></td>
+		<td><u><i>DDR4:</i></u> 2400MHz, 2 Channels, 64GB, <b>38.40GB/s</b></td>
+		<td><s>325</s>, <span style="color: blue;">124</span></td>
+		</tr>			
 		<!-- Add more rows here -->
 	</tbody>
-	</table>	
+	</table>
+	
     </div>
 	</u1>
 	</section>  
 
 	<section>
     <h2>Demonstration Cases</h2>
+    <div class="case">
+		<h3>Case 4: Graph Coloring</h3>
+		<p>
+			<strong>Context:</strong> 
+			To further accelerate the matrix-free computations in SGLDBench, we recently introduced a graph-coloring strategy that partitions the 
+			hexahedral mesh into eight independent groups. Each color represents a set of elements that share no nodes, allowing their contributions 
+			to be processed without write conflicts. As shown in the accompanying figure—featuring the full mesh and its eight color groups—this structured 
+			decomposition enables clean parallel updates, better SIMD utilization, and substantially faster linear system assembly and solves.
+		</p> 
+		
+		<div style="display: inline-block; width: 98%; text-align: center;">
+			<figure>
+				<img src="medias_SGLDBench/case5.png"  
+						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
+						onclick="zoomImage(this, 3)"
+				>
+			</figure>
+		</div>
+	
+    </div>		
+	
     <div class="case">
 		<h3>Case 3: Lightweight Voronoi Sponza</h3>
 		<p>
@@ -438,7 +496,7 @@
 			</figure>
 		</div>		
 		
-		<li><strong>Practice 1.2</strong> Same optimization problem with different simulaton resolutions</li>
+		<li><strong>Practice 1.2</strong> Same optimization problem with different simulation resolutions</li>
 		<div style="display: inline-block; width: 24%; text-align: center;">
 			<figure>
 				<img src="medias_SGLDBench/case1_2_R100.png" 
