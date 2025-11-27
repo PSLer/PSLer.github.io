@@ -226,28 +226,7 @@
 	</section>  
 
 	<section>
-    <h2>Demonstration Cases</h2>
-    <div class="case">
-		<h3>Case 4: Graph Coloring</h3>
-		<p>
-			<strong>Context:</strong> 
-			To further accelerate the matrix-free computations in SGLDBench, we recently introduced a graph-coloring strategy that partitions the 
-			hexahedral mesh into eight independent groups. Each color represents a set of elements that share no nodes, allowing their contributions 
-			to be processed without write conflicts. As shown in the accompanying figure—featuring the full mesh and its eight color groups—this structured 
-			decomposition enables clean parallel updates, better SIMD utilization, and substantially faster linear system assembly and solves.
-		</p> 
-		
-		<div style="display: inline-block; width: 98%; text-align: center;">
-			<figure>
-				<img src="medias_SGLDBench/case5.png"  
-						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
-						onclick="zoomImage(this, 3)"
-				>
-			</figure>
-		</div>
-	
-    </div>		
-	
+    <h2>Demonstration Cases</h2>	
     <div class="case">
 		<h3>Case 3: Lightweight Voronoi Sponza</h3>
 		<p>
