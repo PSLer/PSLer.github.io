@@ -79,7 +79,7 @@
 	<section>
 	<h2>Updates</h2>
 	<ul>
-		<li><strong>2025-11:</strong> A major performance boost—after integrating coloring and SIMD, the linear system solver now runs about 2x
+		<li><strong>2025-11:</strong> A major performance boost—after integrating coloring and SIMD, the linear system solver now runs about 2-3x
 			as fast as the original implementation.</li>
 		<li><strong>2025-08:</strong> Good News! SGLDBench is awarded the <i><b>Replicability Stamp</b></i> under the 
 			<a href="https://www.replicabilitystamp.org/" target="_blank">GRSI</a>.</li>
@@ -152,41 +152,6 @@
 			The convergence threshold of MGCG is 1.0e-3.
 			<span style="color: blue;"><i>Timings have been updated according to the improved matrix-free computations.</i></span> 
 		</p>		
-	<!--
-	<table style="width: 100%; border-collapse: collapse;">
-	<thead>
-		<tr>
-		<th>Time</th>
-		<th>Platform</th>
-		<th>Contributor</th>
-		<th>Elapsed Time (min)</th>
-		</tr>
-	</thead>
-	<tbody>
-	
-		<tr>
-		<td>2025.07</td>
-		<td><u><i>Laptop (Win11 + MATLAB 2023b)</i></u>. <strong>CPU</strong>: AMD Ryzen 7 8845HS (C8T16, 3.8GHz, L3 cache 16MB); <strong>RAM</strong>: 32GB (DDR5-6400MHz), 2 Channels</td>
-		<td>J. Wang</td>
-		<td>139</td>
-		</tr>
-		
-		<tr>
-		<td>2025.07</td>
-		<td><u><i>Desktop (Win10 + MATLAB 2023b)</i></u>. <strong>CPU</strong>: Intel Xeon W-2235 (C6T12, 3.8GHz, L3 cache 8.2MB); <strong>RAM</strong>: 64GB (DDR4-2933MHz), 2 Channels</td>
-		<td>J. Wang</td>
-		<td>242</td>
-		</tr>
-		
-		<tr>
-		<td>2025.07</td>
-		<td><u><i>Desktop (Win11 + MATLAB 2023b)</i></u>. <strong>CPU</strong>: Intel Core i7-7700K (C4T8, 4.2GHz, L3 cache 8.0MB); <strong>RAM</strong>: 64GB (DDR4-2400MHz), 2 Channels</td>
-		<td>J. Wang</td>
-		<td>325</td>
-		</tr>
-	</tbody>
-	</table>
-	-->
 	<table style="width: 100%; border-collapse: collapse;">
 	<thead>
 		<tr>
@@ -227,6 +192,25 @@
 
 	<section>
     <h2>Demonstration Cases</h2>	
+    <div class="case">
+		<h3>Case 4: High-resolution Porous Infill Optimization</h3>
+		<p>
+			<strong>Context:</strong> 
+			A high-resolution porous infill optimization result with the impoved SGLDBench. Resolution: 720x480x1024, #Elements: 78,123,337, #DOFs: 23,7158,634. 
+			Data is available upon proper request.
+		</p> 
+		
+		<div style="display: inline-block; width: 90%; text-align: center;">
+			<figure>
+				<img src="medias_SGLDBench/case5.png"  
+						style="width: 100%; transition: 0.3s; cursor: zoom-in; position: relative; z-index: 1;"
+						onclick="zoomImage(this, 3)"
+				>
+			</figure>
+		</div>
+	
+    </div>		
+	
     <div class="case">
 		<h3>Case 3: Lightweight Voronoi Sponza</h3>
 		<p>
@@ -390,42 +374,6 @@
 			</div>			
 		</div>
 	</div>
-	
-	  <!--
-	  <table width="100%">
-	  <tr>
-	  	<td align="center">
-	  	<figure>
-	  		<img src="medias_SGLDBench/2025-Publication-TVCG-thumbnail.png" width="100%">
-	  		<figcaption>Caption 1</figcaption>
-	  	</figure>
-	  	</td>
-	  	<td align="center">
-	  	<figure>
-	  		<img src="medias_SGLDBench/2025-Publication-TVCG-thumbnail.png" width="100%">
-	  		<figcaption>Caption 2</figcaption>
-	  	</figure>
-	  	</td>
-	  	<td align="center">
-	  	<figure>
-	  		<img src="medias_SGLDBench/2025-Publication-TVCG-thumbnail.png" width="100%">
-	  		<figcaption>Caption 3</figcaption>
-	  	</figure>
-	  	</td>
-	  	<td align="center">
-	  	<figure>
-	  		<img src="medias_SGLDBench/2025-Publication-TVCG-thumbnail.png" width="100%">
-	  		<figcaption>Caption 1</figcaption>
-	  	</figure>
-	  	</td>			
-	  </tr>
-	  </table>
-	  <p>
-		<a href="datasets/case1.h5">[Download Dataset]</a> |
-        <a href="code/snippets/case1_runner.py">[Python Script]</a>
-      </p>
-	  -->
-
     <div class="case">
 		<h3>Case 1: Topology Optimization Practices with SGLDBench</h3>
 		<p>
